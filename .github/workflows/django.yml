@@ -8,6 +8,7 @@ on:
 
 env:
   DEBUG: TRUE
+  SECRET_KEY: my-secret-key
   POSTGRESQL_NAME: postgres_github_actions
   POSTGRESQL_USER: postgres
   POSTGRESQL_PASSWORD: postgres
