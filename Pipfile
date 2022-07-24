@@ -12,6 +12,7 @@ psycopg2-binary = "*"
 black = "*"
 django-sslserver = "*"
 pytest-django = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.9"
