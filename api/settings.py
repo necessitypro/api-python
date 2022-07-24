@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# django default apps
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -46,6 +47,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
+# django necessity pro apps
+INSTALLED_APPS += ["authentication.apps.AuthenticationConfig"]
+
+# django apps for development
 if DEBUG:
     INSTALLED_APPS += ["sslserver"]
 
