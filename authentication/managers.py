@@ -7,12 +7,12 @@ class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         """create and save a new user"""
         if not email:
-            raise ValueError("Users must have an email address")
+            raise ValueError("The provided email address is invalid")
         email = self.normalize_email(email)
 
         account = self.filter(email=email)
         if account.exists():
-            raise ValueError("User with this email already exists")
+            raise ValueError("The provided email address already exist")
 
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
