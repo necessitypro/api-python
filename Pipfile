@@ -10,6 +10,7 @@ psycopg2-binary = "*"
 
 [dev-packages]
 black = "*"
+django-sslserver = "*"
 
 [requires]
 python_version = "3.9"
