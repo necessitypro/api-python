@@ -7,10 +7,11 @@ from authentication.managers import CustomUserManager
 
 
 class Account(AbstractUser):
+    username = None
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ("username",)
+    REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
 
