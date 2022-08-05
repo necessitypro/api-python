@@ -52,6 +52,9 @@ INSTALLED_APPS = [
 # django necessity pro apps
 INSTALLED_APPS += ["authentication.apps.AuthenticationConfig"]
 
+# django third party apps
+INSTALLED_APPS += ["rest_framework"]
+
 # django apps for development
 if DEBUG:
     INSTALLED_APPS += ["sslserver"]
