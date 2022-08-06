@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 # django necessity pro apps
 INSTALLED_APPS += [
     "authentication.apps.AuthenticationConfig",
+    "audit.apps.AuditConfig",
     "geography.apps.GeographyConfig",
 ]
 
