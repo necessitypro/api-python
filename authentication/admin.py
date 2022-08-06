@@ -2,8 +2,10 @@ from django.contrib import admin
 
 from authentication.models import Account
 
-# django admin for account
+
 class AccountAdmin(admin.ModelAdmin):
+    """admin for account"""
+
     list_display = [
         "id",
         "first_name",

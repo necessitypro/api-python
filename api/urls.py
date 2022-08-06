@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+admin.site.site_header = "Necessity Pro Admin Portal"
+admin.site.site_title = "Necessity Pro Admin Portal"
+admin.site.index_title = "Welcome to Necessity Pro Admin Portal"
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
 ]
