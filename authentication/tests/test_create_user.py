@@ -1,8 +1,6 @@
 import pytest
 from authentication.models import Account
 
-"""test user model"""
-
 
 @pytest.mark.django_db
 def test_create_new_user():

@@ -8,6 +8,8 @@ from authentication.managers import CustomUserManager
 
 
 class Account(AbstractUser):
+    """custom user model"""
+
     username = None
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     email = models.EmailField(unique=True)
