@@ -50,7 +50,10 @@ INSTALLED_APPS = [
 ]
 
 # django necessity pro apps
-INSTALLED_APPS += ["authentication.apps.AuthenticationConfig"]
+INSTALLED_APPS += [
+    "authentication.apps.AuthenticationConfig",
+    "geography.apps.GeographyConfig",
+]
 
 # django third party apps
 INSTALLED_APPS += ["rest_framework"]
