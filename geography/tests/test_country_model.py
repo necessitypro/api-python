@@ -1,13 +1,18 @@
 from django.utils.text import slugify
 import pytest
+
 from geography.models import Country
 
 
 @pytest.mark.django_db
 def test_create_country():
     """test creating a country"""
+
     country = Country.objects.create(
-        name="United Kingdom", iso2="GB", iso3="GBR", phone_code=44
+        name="United Kingdom",
+        iso2="GB",
+        iso3="GBR",
+        phone_code=44,
     )
 
     assert country.id is not None
@@ -22,8 +27,12 @@ def test_create_country():
 @pytest.mark.django_db
 def test_update_country():
     """test updating a country"""
+
     country = Country.objects.create(
-        name="United Kingdom", iso2="GB", iso3="GBR", phone_code=44
+        name="United Kingdom",
+        iso2="GB",
+        iso3="GBR",
+        phone_code=44,
     )
 
     assert country.id is not None

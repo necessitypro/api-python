@@ -1,43 +1,8 @@
 """default django packages"""
 from django.db import models
 from django.utils.text import slugify
+
 from uuid import uuid4
-
-from authentication.models import Account
-
-"""
-class AuditBaseModel(models.Model):
-    
-
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    created_on = models.DateTimeField(auto_now_add=True, editable=False)
-    created_by = models.ForeignKey(
-        Account,
-        on_delete=models.RESTRICT,
-        related_name="%(class)s_created_by",
-        editable=False,
-    )
-    modified_on = models.DateTimeField(auto_now=True, editable=False)
-    modified_by = models.ForeignKey(
-        Account,
-        on_delete=models.RESTRICT,
-        null=True,
-        blank=True,
-        related_name="%(class)s_modified_by",
-        editable=False,
-    )
-    modified_diff = models.JSONField(null=True, blank=True, editable=False)
-    archived = models.BooleanField(default=False)
-    archived_on = models.DateTimeField(null=True, blank=True, editable=False)
-    archived_by = models.ForeignKey(
-        Account,
-        on_delete=models.RESTRICT,
-        null=True,
-        blank=True,
-        related_name="%(class)s_archived_by",
-        editable=False,
-    )
-"""
 
 
 class Country(models.Model):

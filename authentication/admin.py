@@ -16,13 +16,31 @@ class AccountAdmin(admin.ModelAdmin):
         "is_superuser",
         "date_joined",
         "email_verified",
+        "phone_verified",
     ]
 
-    list_editable = ["is_active", "is_staff", "is_superuser", "email_verified"]
+    list_editable = [
+        "is_active",
+        "is_staff",
+        "is_superuser",
+        "email_verified",
+        "phone_verified",
+    ]
 
     fieldsets = (
         ("Name", {"fields": ("first_name", "last_name")}),
         ("Email", {"fields": ("email", "email_verified", "email_verified_on")}),
+        (
+            "Phone",
+            {
+                "fields": (
+                    "phone",
+                    "phone_verified",
+                    "phone_verified_on",
+                    "phone_one_time_code",
+                )
+            },
+        ),
         ("Access", {"fields": ("is_active", "is_staff", "is_superuser")}),
         ("Important dates", {"fields": ("last_login", "date_joined")}),
         ("Groups", {"fields": ("groups",)}),
@@ -30,7 +48,15 @@ class AccountAdmin(admin.ModelAdmin):
         ("Secret", {"fields": ("password", "token")}),
     )
 
-    readonly_fields = ("token", "email_verified_on", "date_joined", "last_login")
+    readonly_fields = (
+        "token",
+        "email_verified_on",
+        "date_joined",
+        "last_login",
+        "password",
+        "phone_verified_on",
+        "phone_one_time_code",
+    )
 
     list_filter = [
         "is_active",
