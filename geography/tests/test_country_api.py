@@ -1,15 +1,29 @@
+import email
 from django.urls import reverse
 from rest_framework.test import APIClient
 import pytest
 
+from authentication.models import Account
 from geography.models import Country
 from geography.serializers import CountrySerializer
+
+
+def AuthenticatedClient():
+    """return authenticated client"""
+
+    account = Account.objects.create_user(
+        email="info@necessity.pro", password="password"
+    )
+
+    client = APIClient()
+    client.force_authenticate(account)
+    return client
 
 
 @pytest.mark.django_db
 def test_list_countries():
     """test list countries"""
-    client = APIClient()
+    client = AuthenticatedClient()
     url = reverse("country-list")
     response = client.get(url)
 
@@ -23,7 +37,7 @@ def test_list_countries():
 @pytest.mark.django_db
 def test_create_country():
     """test create country"""
-    client = APIClient()
+    client = AuthenticatedClient()
     url = reverse("country-list")
     data = {
         "name": "United Kingdom",
@@ -32,6 +46,8 @@ def test_create_country():
         "phone_code": 44,
     }
     response = client.post(url, data)
+
+    print(response.data)
 
     assert response.status_code == 201
     assert response.data["name"] == "United Kingdom"
@@ -44,7 +60,7 @@ def test_create_country():
 @pytest.mark.django_db
 def test_update_country():
     """test update country"""
-    client = APIClient()
+    client = AuthenticatedClient()
     url = reverse("country-list")
     data = {
         "name": "United Kingdom",
@@ -82,7 +98,7 @@ def test_update_country():
 @pytest.mark.django_db
 def test_delete_country(client):
     """test delete country"""
-    client = APIClient()
+    client = AuthenticatedClient()
     url = reverse("country-list")
     data = {
         "name": "United Kingdom",

@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, permissions
 from rest_framework.response import Response
 
 from geography.serializers import CountrySerializer
@@ -10,6 +10,7 @@ class CountryViewSet(viewsets.ModelViewSet):
 
     queryset = Country.objects.filter(archived=False).order_by("name")
     serializer_class = CountrySerializer
+    permission_classes = (permissions.IsAuthenticated,)
 
     def destroy(self, request, *args, **kwargs):
         """override destroy method to archive country"""
