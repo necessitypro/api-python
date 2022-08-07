@@ -7,7 +7,7 @@ from geography.models import Country
 class CountryAdmin(admin.ModelAdmin):
     """admin for country"""
 
-    list_display = ["id", "name", "slug", "iso2", "iso3", "phone_code", "archived"]
+    list_display = ["name", "slug", "iso2", "iso3", "phone_code", "archived"]
     list_editable = ("archived",)
     readonly_fields = [
         "id",
@@ -18,7 +18,17 @@ class CountryAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             None,
-            {"fields": ["name", "slug", "iso2", "iso3", "phone_code", "archived"]},
+            {
+                "fields": [
+                    "id",
+                    "name",
+                    "slug",
+                    "iso2",
+                    "iso3",
+                    "phone_code",
+                    "archived",
+                ]
+            },
         ),
     )
 
