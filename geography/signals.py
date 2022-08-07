@@ -1,4 +1,3 @@
-import json
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.forms.models import model_to_dict
@@ -9,6 +8,7 @@ from audit.models import Model
 
 @receiver(post_save, sender=Country)
 def create_audit(sender, instance, created, **kwargs):
+    """create audit entry for country"""
     if created:
         Model.objects.create(
             operation="create",

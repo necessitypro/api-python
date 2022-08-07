@@ -67,7 +67,9 @@ class AccountAdmin(admin.ModelAdmin):
 
     date_hierarchy = "date_joined"
 
-    def full_name(self, obj):
+    @staticmethod
+    def full_name(obj):
+        """return full name"""
         return f"{obj.first_name} {obj.last_name}"
 
 

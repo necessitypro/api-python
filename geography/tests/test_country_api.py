@@ -9,7 +9,6 @@ from geography.serializers import CountrySerializer
 @pytest.mark.django_db
 def test_list_countries():
     """test list countries"""
-
     client = APIClient()
     url = reverse("country-list")
     response = client.get(url)
@@ -24,7 +23,6 @@ def test_list_countries():
 @pytest.mark.django_db
 def test_create_country():
     """test create country"""
-
     client = APIClient()
     url = reverse("country-list")
     data = {
@@ -46,7 +44,6 @@ def test_create_country():
 @pytest.mark.django_db
 def test_update_country():
     """test update country"""
-
     client = APIClient()
     url = reverse("country-list")
     data = {
@@ -85,7 +82,6 @@ def test_update_country():
 @pytest.mark.django_db
 def test_delete_country(client):
     """test delete country"""
-
     client = APIClient()
     url = reverse("country-list")
     data = {

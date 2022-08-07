@@ -21,6 +21,8 @@ class Country(models.Model):
     archived = models.BooleanField(default=False, help_text="Is the country archived?")
 
     class Meta:
+        """meta class"""
+
         db_table = "geography_country"
         verbose_name = "Country"
         verbose_name_plural = "Countries"
@@ -30,5 +32,6 @@ class Country(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
+        """override save method to set slug"""
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)

@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 from uuid import uuid4
 
@@ -21,6 +20,8 @@ class Model(models.Model):
     remote_addr = models.CharField(max_length=255, editable=False)
 
     class Meta:
+        """meta class"""
+
         ordering = ["-timestamp"]
         db_table = "audit_model"
         verbose_name = "Model"
