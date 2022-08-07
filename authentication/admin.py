@@ -7,16 +7,14 @@ class AccountAdmin(admin.ModelAdmin):
     """admin for account"""
 
     list_display = [
-        "id",
-        "first_name",
-        "last_name",
         "email",
+        "full_name",
         "is_active",
         "is_staff",
         "is_superuser",
-        "date_joined",
         "email_verified",
         "phone_verified",
+        "date_joined",
     ]
 
     list_editable = [
@@ -68,6 +66,9 @@ class AccountAdmin(admin.ModelAdmin):
     ]
 
     date_hierarchy = "date_joined"
+
+    def full_name(self, obj):
+        return f"{obj.first_name} {obj.last_name}"
 
 
 admin.site.register(Account, AccountAdmin)

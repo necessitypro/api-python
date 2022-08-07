@@ -31,7 +31,9 @@ class Account(AbstractUser):
         null=True,
         help_text="The country of the user",
     )
-    phone = models.BigIntegerField(null=True, help_text="The phone of the user")
+    phone = models.BigIntegerField(
+        null=True, blank=True, help_text="The phone of the user"
+    )
     phone_verified = models.BooleanField(
         default=False, help_text="Is the phone verified?"
     )
