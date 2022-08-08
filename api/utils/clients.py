@@ -7,7 +7,6 @@ from authentication.models import Account
 
 def SuperuserClient():
     """return superuser authenticated client"""
-
     account = Account.objects.create_superuser(
         email="superuser@necessity.pro", password="password"
     )
@@ -19,7 +18,6 @@ def SuperuserClient():
 
 def UserClient():
     """return user authenticated client"""
-
     modules = ["geography-country"]
 
     user_group = Group.objects.create(name="user")

@@ -9,7 +9,6 @@ from api.utils.clients import UserClient, SuperuserClient
 @pytest.mark.django_db
 def test_superuser_list_countries():
     """test superuser list countries"""
-
     Country.objects.create(
         name="United Kingdom", iso2="GB", iso3="GBR", phone_code="44", archived=True
     )
