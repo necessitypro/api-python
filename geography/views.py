@@ -8,9 +8,18 @@ from geography.models import Country
 class CountryViewSet(viewsets.ModelViewSet):
     """country api endpoint model view set"""
 
-    queryset = Country.objects.filter(archived=False).order_by("name")
+    queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.DjangoObjectPermissions,)
+
+    def get_queryset(self):
+        """override get queryset"""
+        user = self.request.user
+
+        if user.is_superuser:
+            return self.filter_queryset(self.queryset)
+        else:
+            return self.filter_queryset(self.queryset.filter(archived=False))
 
     def destroy(self, request, *args, **kwargs):
         """override destroy method to archive country"""

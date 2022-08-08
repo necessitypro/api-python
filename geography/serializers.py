@@ -9,5 +9,5 @@ class CountrySerializer(serializers.ModelSerializer):
         """meta class"""
 
         model = Country
-        fields = ("id", "name", "slug", "iso2", "iso3", "phone_code")
-        read_only_fields = ("id", "slug")
+        fields = ("id", "name", "slug", "iso2", "iso3", "phone_code", "archived")
+        read_only_fields = ("id", "slug", "archived")
