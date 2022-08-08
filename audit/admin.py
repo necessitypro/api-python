@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
 from audit.models import Model
 
 
 class ModelAdmin(admin.ModelAdmin):
+    """admin for model"""
+
     readonly_fields = (
         "id",
         "operation",

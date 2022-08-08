@@ -18,8 +18,8 @@ class CountryViewSet(viewsets.ModelViewSet):
 
         if user.is_superuser:
             return self.filter_queryset(self.queryset)
-        else:
-            return self.filter_queryset(self.queryset.filter(archived=False))
+
+        return self.filter_queryset(self.queryset.filter(archived=False))
 
     def destroy(self, request, *args, **kwargs):
         """override destroy method to archive country"""

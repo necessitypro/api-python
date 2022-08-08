@@ -3,7 +3,6 @@ import pytest
 
 from geography.models import Country
 from geography.serializers import CountrySerializer
-
 from api.utils.clients import UserClient, SuperuserClient
 
 
@@ -119,7 +118,6 @@ def test_superuser_delete_country(client):
 @pytest.mark.django_db
 def test_user_list_countries():
     """test user list countries"""
-
     Country.objects.create(
         name="United Kingdom", iso2="GB", iso3="GBR", phone_code="44", archived=True
     )
@@ -155,7 +153,6 @@ def test_user_create_country():
 @pytest.mark.django_db
 def test_user_update_country():
     """test user update country"""
-
     country = Country.objects.create(
         name="United Kingdom", iso2="GB", iso3="GBR", phone_code="44"
     )

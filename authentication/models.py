@@ -1,9 +1,7 @@
-"""default django packages"""
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from uuid import uuid4
 
-"""custom packages"""
 from authentication.managers import CustomUserManager
 from geography.models import Country
 
@@ -54,5 +52,5 @@ class Account(AbstractUser):
     def __str__(self):
         if self.first_name and self.last_name:
             return f"{self.first_name} {self.last_name}"
-        else:
-            return self.email
+
+        return self.email
