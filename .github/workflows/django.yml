@@ -9,6 +9,7 @@ on:
 env:
   DEBUG: TRUE
   SECRET_KEY: my-secret-key
+  JWT_SECRET: my-jwt-secret
   POSTGRES_DATABASE: postgres_github_actions
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
