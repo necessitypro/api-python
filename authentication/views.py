@@ -1,10 +1,7 @@
-import jwt
 from rest_framework.views import APIView
 from authentication.controllers.login import LoginController
-
-from api.utils.response import ErrorResponse, SuccessResponse
-
 from authentication.utils import CreateRefreshTokenCookie, CreateAccessTokenCookie
+from api.utils.response import ErrorResponse, SuccessResponse
 
 
 class LoginView(APIView):
@@ -17,9 +14,11 @@ class LoginView(APIView):
 
         if error is not None:
             return ErrorResponse(error)
-        else:
-            if user is not None:
-                response = SuccessResponse(user)
-                response = CreateAccessTokenCookie(response, user)
-                response = CreateRefreshTokenCookie(response, user)
-                return response
+
+        if user is not None:
+            response = SuccessResponse(user)
+            response = CreateAccessTokenCookie(response, user)
+            response = CreateRefreshTokenCookie(response, user)
+            return response
+
+        return None

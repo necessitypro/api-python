@@ -1,10 +1,8 @@
 import re
-from django.core.validators import validate_email
 
 
 def val_email(email, required=True):
     """validate email"""
-
     error = None
     email = email.strip().lower()
 
@@ -21,7 +19,6 @@ def val_email(email, required=True):
 
 def val_required(value, required=True):
     """validate required"""
-
     error = None
 
     if required and not value:

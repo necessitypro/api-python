@@ -7,7 +7,6 @@ from authentication.controllers.login import LoginController
 @pytest.mark.django_db
 def test_login_with_empty_email_and_password():
     """test login with empty email and password"""
-
     error, user = LoginController(email="", password="")
 
     assert user is None
@@ -21,7 +20,6 @@ def test_login_with_empty_email_and_password():
 @pytest.mark.django_db
 def test_login_with_invalid_email_and_password():
     """test login with invalid email and password"""
-
     error, user = LoginController(email="invalid_email", password="")
 
     assert user is None
@@ -32,7 +30,6 @@ def test_login_with_invalid_email_and_password():
 @pytest.mark.django_db
 def test_login_with_email_and_password():
     """test login with valid email and password"""
-
     error, user = LoginController(email="info@necessity.pro", password="password")
 
     assert user is None
@@ -43,10 +40,7 @@ def test_login_with_email_and_password():
 @pytest.mark.django_db
 def test_login_with_valid_email_and_invalid_password():
     """test login with valid email and invalid password"""
-
-    account = Account.objects.create_user(
-        email="info@necessity.pro", password="password"
-    )
+    Account.objects.create_user(email="info@necessity.pro", password="password")
 
     error, user = LoginController(
         email="info@necessity.pro", password="invalid_password"
@@ -60,7 +54,6 @@ def test_login_with_valid_email_and_invalid_password():
 @pytest.mark.django_db
 def test_login_with_valid_email_and_valid_password():
     """test login with valid email and valid password"""
-
     account = Account.objects.create_user(
         email="info@necessity.pro", password="password"
     )
@@ -68,6 +61,7 @@ def test_login_with_valid_email_and_valid_password():
     error, user = LoginController(email="info@necessity.pro", password="password")
 
     assert user is not None
+    assert len(error) == 0
     assert user["email"] == account.email
     assert user["id"] == str(account.id)
     assert user["first_name"] == account.first_name
