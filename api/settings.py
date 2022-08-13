@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
-
 import environ
 
 env = environ.Env(
@@ -34,7 +34,7 @@ DEBUG = env("DEBUG")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
@@ -153,3 +153,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # custom user model
 AUTH_USER_MODEL = "authentication.Account"
+
+# csrf trusted origins
+CSRF_TRUSTED_ORIGINS = ["https://app.necessity.pro"]
+
+# simple jwt settings
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": env("JWT_SECRET"),
+    "VERIFYING_KEY": None,
+    "AUDIENCE": None,
+    "ISSUER": "necessity",
+}

@@ -24,5 +24,6 @@ admin.site.index_title = "Welcome to Necessity Pro Admin Portal"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("auth/", include("authentication.urls")),
     path("", include(router.urls)),
 ]
