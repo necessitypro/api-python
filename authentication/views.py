@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from authentication.controllers.login import LoginController
 from authentication.utils import CreateRefreshTokenCookie, CreateAccessTokenCookie
 from api.utils.response import ErrorResponse, SuccessResponse
+from api.utils.errors import get_error_response
 
 
 class LoginView(APIView):
@@ -10,15 +11,22 @@ class LoginView(APIView):
     def post(self, request):
         """login post email and password"""
         data = request.data
-        error, user = LoginController(data["email"], data["password"])
+        error = []
 
-        if error is not None:
-            return ErrorResponse(error)
+        if not data.get("email"):
+            error.append(get_error_response("email", "FIELD_REQUIRED"))
 
-        if user is not None:
+        if not data.get("password"):
+            error.append(get_error_response("password", "FIELD_REQUIRED"))
+
+        if len(error) == 0:
+            error, user = LoginController(data["email"], data["password"])
+            if len(error) > 0:
+                return ErrorResponse(error)
+
             response = SuccessResponse(user)
             response = CreateAccessTokenCookie(response, user)
             response = CreateRefreshTokenCookie(response, user)
             return response
 
-        return None
+        return ErrorResponse(error)

@@ -4,6 +4,7 @@ err_codes = {
     "EMAIL_REQUIRED": "The email is required.",
     "EMAIL_INVALID": "The email is invalid.",
     "FIELD_REQUIRED": "This field is required",
+    "PASSWORD_REQUIRED": "The password is required.",
 }
 
 

@@ -5,6 +5,12 @@ from rest_framework.test import APIClient
 from authentication.models import Account
 
 
+def Client():
+    """return unauthenticated client"""
+    client = APIClient()
+    return client
+
+
 def SuperuserClient():
     """return superuser authenticated client"""
     account = Account.objects.create_superuser(

@@ -1,5 +1,4 @@
 import pytest
-
 from authentication.models import Account
 from authentication.controllers.login import LoginController
 
